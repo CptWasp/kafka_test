@@ -30,8 +30,6 @@ public class GetServiceTest {
 
 
         GetService getService = new GetService(bootstrapServer, topicName);
-//        ConsumerRecords getServiceRecords = getService.getRecords();
-//        getServiceRecords.records(topicName).forEach(gets -> System.out.println("+++" + gets));
         int recordsSize = getService.getRecordsSize();
 
         assertEquals(1, recordsSize);

@@ -30,12 +30,4 @@ public class GetService {
         return records.count();
     }
 
-    public ConsumerRecords getRecords(){
-        Consumer consumer = new KafkaConsumer(properties);
-        consumer.subscribe(Arrays.asList(topicName));
-        ConsumerRecords records = consumer.poll(Duration.ofMillis(10000));
-        consumer.close();
-        return records;
-    }
-
 }

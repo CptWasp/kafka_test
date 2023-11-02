@@ -26,6 +26,7 @@ public class SendService {
         Producer producer = new KafkaProducer<>(properties);
 
         records.forEach(s -> producer.send(new ProducerRecord<>(topicName, s)));
+        producer.close();
 
     }
 

@@ -41,9 +41,6 @@ public class SendServiceTest {
 
 
         GetService getService = new GetService(bootstrapServer, topicName);
-        ConsumerRecords getServiceRecords = getService.getRecords();
-
-        getServiceRecords.records(topicName).forEach(c -> System.out.println(c));
 
         assertEquals(3, records.count());
     }
