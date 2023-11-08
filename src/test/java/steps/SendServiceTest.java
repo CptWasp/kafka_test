@@ -40,7 +40,6 @@ public class SendServiceTest {
         consumer.close();
 
 
-        GetService getService = new GetService(bootstrapServer, topicName);
 
         assertEquals(3, records.count());
     }

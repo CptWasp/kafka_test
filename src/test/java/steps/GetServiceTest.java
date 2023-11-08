@@ -25,7 +25,7 @@ public class GetServiceTest {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         KafkaProducer producer = new KafkaProducer<>(properties);
-        producer.send(new ProducerRecord<>(topicName, "hello"));
+        producer.send(new ProducerRecord<>(topicName, "hello1"));
         producer.close();
 
 
