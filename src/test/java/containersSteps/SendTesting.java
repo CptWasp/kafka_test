@@ -1,17 +1,16 @@
 package containersSteps;
 
 
-import kafkaReuse.KafkaReuseContainer;
+import kafkaReuse.ReusableKafkaContainer;
+import kafkaReuse.ReuseKafkaContainerExtension;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.testcontainers.containers.KafkaContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.utility.DockerImageName;
 import services.SendService;
 
 import java.time.Duration;
@@ -21,8 +20,9 @@ import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Testcontainers
-public class SendServiceTest {
+//@Testcontainers
+@ExtendWith(ReuseKafkaContainerExtension.class)
+public class SendTesting {
 
     /** Принудительный запуск контейнеров
     @Container
@@ -31,11 +31,14 @@ public class SendServiceTest {
 
 
 //    KafkaContainer kafkaContainer = KafkaReuseContainer.reuseContainer("getAndSend");
-    KafkaContainer kafkaContainer = KafkaReuseContainer.reuseContainer("send");
+//    KafkaContainer kafkaContainer = KafkaReuseContainer.reuseContainer("send");
+
+    @ReusableKafkaContainer
+    KafkaContainer kafkaContainer;
 
     @Test
     public void sendRecordInContainer(){
-        kafkaContainer.start();
+//        kafkaContainer.start();
         String bootstrapServer = kafkaContainer.getBootstrapServers();
 //        String topicName = "send-container-topic";
         String topicName = "topic";

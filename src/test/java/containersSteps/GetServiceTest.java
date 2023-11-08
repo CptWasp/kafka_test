@@ -1,11 +1,13 @@
 package containersSteps;
 
 import kafkaReuse.KafkaReuseContainer;
+import kafkaReuse.ReuseKafkaContainerExtension;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -17,6 +19,7 @@ import java.util.Properties;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Testcontainers
+//@ExtendWith(ReuseKafkaContainerExtension.class)
 public class GetServiceTest {
 
     /** Принудительный запуск контейнеров
@@ -30,7 +33,7 @@ public class GetServiceTest {
 
     @Test
     public void getRecordsFromContainer(){
-        kafkaContainer.start();
+//        kafkaContainer.start();
         String bootstrapServer = kafkaContainer.getBootstrapServers();
 //        String topicName = "read-topic";
         String topicName = "topic";
